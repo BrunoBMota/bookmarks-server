@@ -17,11 +17,11 @@ bookmarksRouter
     const { title, url, description=false, rating} = req.body
 
     if(!title){
-      res.status(400).send('title required')
+      return res.status(400).send('title required')
     }
 
     if(!Number.isInteger(rating) || rating < 0 || rating > 5){
-
+      return res.status(400).send(`'rating' must be a number between 0 and 5`)
     }
 
     if(!isWebUri(url)){
